@@ -8,19 +8,51 @@
 form {
 	display: flex;
 	flex-direction: column;
-	width: 80%;
-	gap: 20px;
+	width: 70%;
+	gap: 15px;
 }
 
 label {
 	display: flex;
 	flex-direction: column;
 	font-weight: 600;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 input {
 	margin-top: 5px;
+	padding: 0.8rem;
+	border-radius: 0.3rem;
+	border: 1px solid grey;
+	outline: none;
+	font-size: 1rem;
+}
+
+input:focus {
+	outline: none;
+}
+
+button {
+	width: 40%;
+	padding: 0.7rem;
+	border-radius: 0.5rem;
+	border: 1px solid gray;
+	outline: none;
+	font-size: 1rem;
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	align-self: center;
+}
+
+button:hover {
+	background-color: white;
+	color: black;
+}
+
+.input-err {
+	border: 1px solid red;
 }
 
 
@@ -28,5 +60,22 @@ input {
 	color: red;
 	font-size: 0.8rem;
 	margin-top: 0.2rem;
-	margin-bottom: 0.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+
+	h1 {
+		font-size: 30px;
+	}
+
+	form {
+		width: 90%;
+	}
+
+	label {
+		width: 100%;
+	}
 }

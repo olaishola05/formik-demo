@@ -53,25 +53,25 @@ const Form: React.FC = () => {
 
 						<label htmlFor="name">
 							Name:
-							<Field name="name" type="text" className={errors.name ? 'error' : ''}/>
+							<Field name="name" type="text" className={errors.name && 'input-err'}/>
 							<ErrorMessage className='error' name="name" component="div" />
 
 						</label>
 						<label htmlFor="email">
 							Email:
-							<Field name="email" type="email" className={errors.email ? 'error' : ''}/>
+							<Field name="email" type="email" className={errors.email && 'input-err'}/>
 							<ErrorMessage className='error' name="email" component="div" />
 						</label>
 
 						<label htmlFor="password">
 							Password:
-							<Field name="password" type="password" className={errors.password ? 'error' : ''}/>
+							<Field name="password" type="password" className={errors.password && 'input-err'}/>
 							<ErrorMessage className='error' name="password" component="div" />
 						</label>
 
 						<label htmlFor="confirmPassword">
 							Confirm Password:
-							<Field name="confirmPassword" type="password" className={errors.confirmPassword ? 'error' : ''}/>
+							<Field name="confirmPassword" type="password" className={errors.confirmPassword && 'input-err'}/>
 							<ErrorMessage className='error' name="confirmPassword" component="div" />
 						</label>
 						<button type="submit" disabled={isSubmitting}>
