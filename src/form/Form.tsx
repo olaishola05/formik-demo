@@ -11,7 +11,10 @@ interface FormValues {
 }
 
 const validationSchema = Yup.object().shape({
-	name: Yup.string().required('Name is required'),
+	name: Yup.string()
+	.min(2, 'Name must be minimum 2')
+	.max(100, 'Name must not be more than 100 characters')
+	.required('Name is required'),
 	email: Yup.string().email('Invalid email').required('Email is required'),
 	password: Yup.string()
 		.min(6, 'Password must be at least 6 characters')
@@ -38,35 +41,39 @@ const Form: React.FC = () => {
 	}
 
 	return (
-		<div>
-			<h1>Form Validation Example</h1>
+		<div className='main'>
+			<h1>Registration Form</h1>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={validationSchema}
 				onSubmit={handleSubmit}
 			>
-				{({ isSubmitting }) => (
-					<form>
-						<div>
-							<label htmlFor="name">Name</label>
-							<Field name="name" type="text" />
-							<ErrorMessage name="name" component="div" />
-						</div>
-						<div>
-							<label htmlFor="email">Email</label>
-							<Field name="email" type="email" />
-							<ErrorMessage name="email" component="div" />
-						</div>
-						<div>
-							<label htmlFor="password">Password</label>
-							<Field name="password" type="password" />
-							<ErrorMessage name="password" component="div" />
-						</div>
-						<div>
-							<label htmlFor="confirmPassword">Confirm Password</label>
-							<Field name="confirmPassword" type="password" />
-							<ErrorMessage name="confirmPassword" component="div" />
-						</div>
+				{({ isSubmitting, errors, handleSubmit }) => (
+					<form onSubmit={handleSubmit}>
+
+						<label htmlFor="name">
+							Name:
+							<Field name="name" type="text" className={errors.name ? 'error' : ''}/>
+							<ErrorMessage className='error' name="name" component="div" />
+
+						</label>
+						<label htmlFor="email">
+							Email:
+							<Field name="email" type="email" className={errors.email ? 'error' : ''}/>
+							<ErrorMessage className='error' name="email" component="div" />
+						</label>
+
+						<label htmlFor="password">
+							Password:
+							<Field name="password" type="password" className={errors.password ? 'error' : ''}/>
+							<ErrorMessage className='error' name="password" component="div" />
+						</label>
+
+						<label htmlFor="confirmPassword">
+							Confirm Password:
+							<Field name="confirmPassword" type="password" className={errors.confirmPassword ? 'error' : ''}/>
+							<ErrorMessage className='error' name="confirmPassword" component="div" />
+						</label>
 						<button type="submit" disabled={isSubmitting}>
 							Submit
 						</button>
