@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 	.min(2, 'Name must be minimum 2')
 	.max(100, 'Name must not be more than 100 characters')
 	.required('Name is required'),
-	email: Yup.string().email('Invalid email').required('Email is required'),
+	email: Yup.string().email('Invalid email').required('Email is required').matches(/^[\w\-.]+@([\w-]+\.)+[\w-]{2,}$/gm, {message: 'Invalid email', excludeEmptyString: true}),
 	password: Yup.string()
 		.min(6, 'Password must be at least 6 characters')
 		.required('Password is required'),
